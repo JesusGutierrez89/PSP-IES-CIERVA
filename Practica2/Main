@@ -1,0 +1,31 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        BufferedReader reader;
+        
+        ArrayList<Hilo> hilos = new ArrayList<Hilo>();
+
+		try {
+			reader = new BufferedReader(new FileReader("C:\\Users\\Guty\\Desktop\\Programacion de servicios y procesos\\Practica2(LanzaryGestionar)\\Practica2\\src/psptab.txt")); 
+			//profesor pon esta ruta cuando lo pruebes (./psptab.txt)
+			String line = reader.readLine();
+
+			while (line != null) {
+				String hora = line.length() >= 5? line.substring(0, 5) : line;// lee los 5 primeros caracteres
+				
+                String commandos = line.length() >= 5 ? line.substring(6) : line;// lee los 5 posteriores caracteres
+				System.out.println("Primeros 5 caracteres: " + hora);
+                System.out.println("Caracteres posteriores: " + commandos);
+                line = reader.readLine();
+			}
+
+			reader.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    }
+}
